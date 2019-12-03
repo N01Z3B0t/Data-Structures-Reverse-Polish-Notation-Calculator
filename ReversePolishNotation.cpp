@@ -27,6 +27,7 @@
 			   12 20 30 / = Error: Too many operands
 			  -10 -30 - = 20
 			   100 10 50 25 / * - -2 / = -40
+			   0
 ============================================================================*/
 #include <iostream>
 #include <sstream>
@@ -182,16 +183,15 @@ int main(void)
 	string operation;
 	header();
 
-	cout << "Enter value: \n>> ";
-	getline(cin, s);
 
-	stringstream str(s);
 
-//	while(s!="0")
-//	  {
+do{
+    cout << "Enter value: \n>> ";
+    	getline(cin, s);
 
-	    while (s!= "=")
-	      {
+    	stringstream str(s);
+//	    while (s!= "=")
+//	      {
 
 		while(!str.eof())
 		  {
@@ -215,14 +215,14 @@ int main(void)
 					    {
 						    result = lVal + rVal;
 						    rpn.push(result);
-						    rpn.printRPN();
+//						    rpn.printRPN();
 					    }//end if
 
 					    if (operation == "-")
 					    {
 						    result = lVal - rVal;
 						    rpn.push(result);
-						    rpn.printRPN();
+//						    rpn.printRPN();
 
 					    }//end if
 
@@ -230,7 +230,7 @@ int main(void)
 					    {
 						    result = lVal * rVal;
 						    rpn.push(result);
-						    rpn.printRPN();
+//						    rpn.printRPN();
 
 					    }//end if
 
@@ -247,7 +247,7 @@ int main(void)
 							    {
 								  result = lVal / rVal;
 								  rpn.push(result);
-								  rpn.printRPN();
+//								  rpn.printRPN();
 							    }//end else
 						  }//end if
 					    }//end try
@@ -257,20 +257,25 @@ int main(void)
 							cout << "Error: " << e.what() << endl;
 							system("PAUSE");
 						    }//end catch
-					if(operation == "="){
 
-					}
+
 
 
 				  }//end if
-			      rpn.printRPN();
+			      if(operation == "=")
+			      {
+			      	rpn.printRPN();
+
+			      }
+//			      	rpn.pop();
+
 		      }// end while str.eof()
-			    cout << "Enter value: \n>> ";
-			    	getline(cin, s);
-	      }// end while "="
+//			    cout << "Enter value: \n>> ";
+//			    	getline(cin, s);
+//	      }// end while "="
+}while(s!="0");//end do while
 
-
-//	  }//end while "0"
+	    cout << "End Program" << endl;
 
 	footer();
 
@@ -281,5 +286,6 @@ int main(void)
 	//system("PAUSE");
 	return 0;
 }// end main
+
 
 
